@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JS Programs by Aastha</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9ff;
+      color: #333;
+      padding: 2rem;
+    }
+
+    h1, h2 {
+      color: #4b0082;
+      text-align: center;
+    }
+
+    .program {
+      border: 1px solid #d8d0ff;
+      border-radius: 10px;
+      padding: 1rem;
+      margin: 1rem auto;
+      max-width: 600px;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .program input, .program button, .program select {
+      margin-top: 0.5rem;
+      padding: 0.5rem;
+      font-size: 1rem;
+      margin-right: 0.5rem;
+    }
+
+    .github {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .github a {
+      text-decoration: none;
+      padding: 0.75rem 1.5rem;
+      background-color: #4b0082;
+      color: white;
+      border-radius: 25px;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .github a:hover {
+      background-color: #360062;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>JavaScript Programs</h1>
+
+  <div class="program">
+    <h2>1. Prime or Not</h2>
+    <input type="number" id="primeInput" placeholder="Enter number">
+    <button onclick="checkPrime()">Check</button>
+    <p id="primeResult"></p>
+  </div>
+
+  <div class="program">
+    <h2>2. Even or Odd</h2>
+    <input type="number" id="evenOddInput" placeholder="Enter number">
+    <button onclick="checkEvenOdd()">Check</button>
+    <p id="evenOddResult"></p>
+  </div>
+
+  <div class="program">
+    <h2>3. Calculator</h2>
+    <input type="number" id="calcA"> 
+    <input type="number" id="calcB">
+    <select id="operation">
+      <option value="+">+</option>
+      <option value="-">-</option>
+      <option value="*">*</option>
+      <option value="/">/</option>
+    </select>
+    <button onclick="calculate()">=</button>
+    <p id="calcResult"></p>
+  </div>
+
+  <div class="program">
+    <h2>4. Button Color Toggle</h2>
+    <button id="colorBtn" onclick="toggleColor()">Toggle Color</button>
+  </div>
+
+  <div class="program">
+    <h2>5. Counter</h2>
+    <button onclick="decrement()">-</button>
+    <span id="counter">0</span>
+    <button onclick="increment()">+</button>
+  </div>
+
+  <div class="program">
+    <h2>6. Palindrome Checker</h2>
+    <input type="text" id="palinInput" placeholder="Enter word">
+    <button onclick="checkPalindrome()">Check</button>
+    <p id="palinResult"></p>
+  </div>
+
+  <div class="program">
+    <h2>7. Factorial</h2>
+    <input type="number" id="factInput" placeholder="Enter number">
+    <button onclick="getFactorial()">Calculate</button>
+    <p id="factResult"></p>
+  </div>
+
+  <div class="program">
+    <h2>8. Temperature Converter</h2>
+    <input type="number" id="tempInput" placeholder="Enter temperature">
+    <select id="tempType">
+      <option value="CtoF">Celsius to Fahrenheit</option>
+      <option value="FtoC">Fahrenheit to Celsius</option>
+    </select>
+    <button onclick="convertTemp()">Convert</button>
+    <p id="tempResult"></p>
+  </div>
+
+  <div class="program">
+    <h2>9. Reverse a String</h2>
+    <input type="text" id="revInput" placeholder="Enter text">
+    <button onclick="reverseString()">Reverse</button>
+    <p id="revResult"></p>
+  </div>
+
+  <div class="program">
+    <h2>10. Random Number (1–100)</h2>
+    <button onclick="randomNumber()">Generate</button>
+    <p id="randResult"></p>
+  </div>
+
+  <div class="program">
+    <h2>11. Simple Interest</h2>
+    <input type="number" id="p" placeholder="Principal">
+    <input type="number" id="r" placeholder="Rate (%)">
+    <input type="number" id="t" placeholder="Time (years)">
+    <button onclick="calcInterest()">Calculate</button>
+    <p id="siResult"></p>
+  </div>
+
+  <div class="program">
+    <h2>12. Character Counter</h2>
+    <input type="text" id="charInput" placeholder="Type something">
+    <p>Character count: <span id="charCount">0</span></p>
+  </div>
+
+  <div class="github">
+    <a href="https://github.com/HIDDENARC/JSFUNCTIONS.git" target="_blank">View on GitHub</a>
+  </div>
+
+  <script>
+    function checkPrime() {
+      const num = parseInt(document.getElementById('primeInput').value);
+      let isPrime = num > 1;
+      for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) isPrime = false;
+      }
+      document.getElementById('primeResult').innerText = isPrime ? "Prime" : "Not Prime";
+    }
+
+    function checkEvenOdd() {
+      const num = parseInt(document.getElementById('evenOddInput').value);
+      document.getElementById('evenOddResult').innerText = (num % 2 === 0) ? "Even" : "Odd";
+    }
+
+    function calculate() {
+      const a = parseFloat(document.getElementById('calcA').value);
+      const b = parseFloat(document.getElementById('calcB').value);
+      const op = document.getElementById('operation').value;
+      let result = eval(`${a} ${op} ${b}`);
+      document.getElementById('calcResult').innerText = "Result: " + result;
+    }
+
+    function toggleColor() {
+      const btn = document.getElementById('colorBtn');
+      btn.style.backgroundColor = (btn.style.backgroundColor === 'purple') ? 'lightgray' : 'purple';
+      btn.style.color = 'white';
+    }
+
+    let count = 0;
+    function increment() {
+      document.getElementById('counter').innerText = ++count;
+    }
+    function decrement() {
+      document.getElementById('counter').innerText = --count;
+    }
+
+    function checkPalindrome() {
+      const val = document.getElementById('palinInput').value.toLowerCase();
+      const reversed = val.split('').reverse().join('');
+      document.getElementById('palinResult').innerText = (val === reversed) ? "Palindrome" : "Not Palindrome";
+    }
+
+    function getFactorial() {
+      const n = parseInt(document.getElementById('factInput').value);
+      let result = 1;
+      for (let i = 2; i <= n; i++) result *= i;
+      document.getElementById('factResult').innerText = "Factorial: " + result;
+    }
+
+    function convertTemp() {
+      const val = parseFloat(document.getElementById('tempInput').value);
+      const type = document.getElementById('tempType').value;
+      let result = type === "CtoF" ? (val * 9/5) + 32 : (val - 32) * 5/9;
+      document.getElementById('tempResult').innerText = "Result: " + result.toFixed(2);
+    }
+
+    function reverseString() {
+      const val = document.getElementById('revInput').value;
+      document.getElementById('revResult').innerText = val.split('').reverse().join('');
+    }
+
+    function randomNumber() {
+      document.getElementById('randResult').innerText = "Random number: " + Math.floor(Math.random() * 100 + 1);
+    }
+
+    function calcInterest() {
+      const p = parseFloat(document.getElementById('p').value);
+      const r = parseFloat(document.getElementById('r').value);
+      const t = parseFloat(document.getElementById('t').value);
+      const si = (p * r * t) / 100;
+      document.getElementById('siResult').innerText = "Simple Interest: " + si.toFixed(2);
+    }
+
+    document.getElementById('charInput').addEventListener('input', function() {
+      document.getElementById('charCount').innerText = this.value.length;
+    });
+  </script>
+
+</body>
+</html>
